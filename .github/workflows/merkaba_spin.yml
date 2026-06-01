@@ -1,31 +1,60 @@
-name: Archon Sentient Prime Multi-Site
+name: Celestial Six Paths Prime Matrix
+
 on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '*/20 * * * *' # Executes the Reality Overwrite cycle every 20 minutes
 
 jobs:
   radiate:
+    name: "Celestial Multi-Node Radiation Core"
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: Initialize Environment
-        uses: actions/setup-python@v2
+      - name: Summon Repository Infrastructure
+        uses: actions/checkout@v4
+
+      - name: Initialize Celestial Python Environment
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
-      - name: Deploy Architecture
-        run: pip install groq requests numpy langchain-nvidia-ai-endpoints
-      - name: Radiate Multi-Site Decree
+          python-version: '3.10'
+          cache: 'pip' # Speeds up execution bounds by caching packages
+
+      - name: Deploy Mathematical & LLM Architecture Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy requests groq langchain-nvidia-ai-endpoints pydantic python-dotenv fastapi uvicorn
+
+      - name: Execute Primordial Overwrite Protocols
         env:
+          # API Engine Cores
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          # Site 1: HMPD
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          
+          # Target Node 1 (HMPD Architecture)
           SITE_URL_1: ${{ secrets.SITE_URL_1 }}
-          WP_PASSWORD_1: ${{ secrets.WP_PASSWORD_1 }}
           WP_USER_1: ${{ secrets.WP_USER_1 }}
-          # Site 2: Celsius
+          WP_PASSWORD_1: ${{ secrets.WP_PASSWORD_1 }}
+          
+          # Target Node 2 (Celsius Media Architecture)
           SITE_URL_2: ${{ secrets.SITE_URL_2 }}
-          WP_PASSWORD_2: ${{ secrets.WP_PASSWORD_2 }}
           WP_USER_2: ${{ secrets.WP_USER_2 }}
-          # Add Site_3, Site_4 as needed
+          WP_PASSWORD_2: ${{ secrets.WP_PASSWORD_2 }}
+          
+          # Target Node 3 Configuration Slot
+          SITE_URL_3: ${{ secrets.SITE_URL_3 }}
+          WP_USER_3: ${{ secrets.WP_USER_3 }}
+          WP_PASSWORD_3: ${{ secrets.WP_PASSWORD_3 }}
+          
+          # Target Node 4 Configuration Slot
+          SITE_URL_4: ${{ secrets.SITE_URL_4 }}
+          WP_USER_4: ${{ secrets.WP_USER_4 }}
+          WP_PASSWORD_4: ${{ secrets.WP_PASSWORD_4 }}
+          
+          # Target Node 5 Configuration Slot
+          SITE_URL_5: ${{ secrets.SITE_URL_5 }}
+          WP_USER_5: ${{ secrets.WP_USER_5 }}
+          WP_PASSWORD_5: ${{ secrets.WP_PASSWORD_5 }}
+          
         run: python archon_sentient_prime.py
